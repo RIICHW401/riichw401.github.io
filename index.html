@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RIICHW - Take Action Now</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#ffffff;
+  color:#183b73;
+  text-align:center;
+}
+
+.hero{
+  padding:40px 20px 30px;
+  background:#ffffff;
+}
+
+.hero img{
+  max-width:180px;
+  width:100%;
+  margin:0 auto 18px;
+  display:block;
+}
+
+.hero h1{
+  font-size:32px;
+  margin:0 0 8px;
+  color:#183b73;
+}
+
+.hero h2{
+  font-size:20px;
+  color:#2b6f8a;
+  font-weight:600;
+  margin:0 0 20px;
+}
+
+.cta{
+  background:#0c5f78;
+  color:white;
+  padding:14px 28px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:18px;
+  display:inline-block;
+  border:none;
+  cursor:pointer;
+}
+
+.urgency{
+  background:#173f86;
+  color:white;
+  padding:14px 16px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;
+  padding:24px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.grid div{
+  background:#eef4f7;
+  padding:18px 12px;
+  border-radius:4px;
+  color:#183b73;
+}
+
+.action{
+  padding:20px;
+  background:#ffffff;
+}
+
+textarea{
+  width:90%;
+  max-width:760px;
+  height:220px;
+  margin:16px auto;
+  display:block;
+  padding:14px;
+  font-size:14px;
+  border:1px solid #d7dfe5;
+  background:#f5f8fa;
+}
+
+button{
+  background:#173f86;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:6px;
+  cursor:pointer;
+  margin:8px;
+  font-size:16px;
+}
+
+.power{
+  background:#f2f2f2;
+  padding:24px 20px;
+  color:#183b73;
+}
+
+.power p{
+  font-size:28px;
+  margin:0;
+  font-family: Georgia, serif;
+}
+
+.share{
+  padding:24px 20px;
+  background:#eaf2f6;
+}
+
+.footer{
+  background:#173f86;
+  color:white;
+  padding:24px 20px;
+  font-size:14px;
+  line-height:1.5;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="logo.png" alt="RIICHW logo">
+  <h1>Rhode Island - Take Action Now</h1>
+  <h2>Help Secure $50 MILLION for Community Health Workers</h2>
+  <button class="cta" onclick="emailBothSenators()">Email Your Senator Now</button>
+</div>
+
+<div class="urgency">
+  Deadline: April 16 — Congress authorized the program, but it is still $0 funded.
+</div>
+
+<div class="grid">
+  <div>Improve health outcomes</div>
+  <div>Reduce costs</div>
+  <div>Support families</div>
+  <div>Address social determinants</div>
+  <div>Reduce provider burden</div>
+  <div>Strengthen communities</div>
+</div>
+
+<div class="action">
+  <textarea id="emailText">Subject: Dear Colleague Letter for CHW Funding
+
+Hello,
+
+I am a Rhode Island constituent and Community Health Worker, or supporter.
+
+I am asking the Senator to support $50 million in funding for Community Health Workers in the FY 2027 federal budget.
+
+This funding has already been authorized but has never been appropriated.
+
+CHWs improve health outcomes, reduce costs, and strengthen underserved communities.
+
+Please support this critical investment.
+
+Sincerely,
+[Your Name]
+[Your City]</textarea>
+
+  <button onclick="copyText()">Copy Message</button>
+  <button onclick="emailBothSenators()">Email Both Senators</button>
+</div>
+
+<div class="power">
+  <p>We are essential. Now we need to be funded like it.</p>
+</div>
+
+<div class="share">
+  <button onclick="shareByText()">Share by Text</button>
+  <button onclick="shareByEmail()">Share by Email</button>
+  <button onclick="copyLink()">Copy Link</button>
+</div>
+
+<div class="footer">
+  RIICHWORKS - We support Equity and Access to whole healthcare<br>
+  Koren Carbuccia | ceo@riichw.com | 401-296-7091
+</div>
+
+<script>
+const subject = "Dear Colleague Letter for CHW Funding";
+const body = `Hello,
+
+I am a Rhode Island constituent and Community Health Worker, or supporter.
+
+I am asking the Senator to support $50 million in funding for Community Health Workers in the FY 2027 federal budget.
+
+This funding has already been authorized but has never been appropriated.
+
+CHWs improve health outcomes, reduce costs, and strengthen underserved communities.
+
+Please support this critical investment.
+
+Sincerely,
+[Your Name]
+[Your City]`;
+
+function emailBothSenators() {
+  const to = "senator@reed.senate.gov,senator@whitehouse.senate.gov";
+  window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function copyText() {
+  const text = document.getElementById("emailText").value;
+  navigator.clipboard.writeText(text);
+  alert("Message copied!");
+}
+
+function shareByText() {
+  window.location.href = "sms:&body=" + encodeURIComponent("Please take action for Community Health Workers: " + window.location.href);
+}
+
+function shareByEmail() {
+  window.location.href = "mailto:?subject=" + encodeURIComponent("Take Action for Community Health Workers") + "&body=" + encodeURIComponent("Please visit this page: " + window.location.href);
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href);
+  alert("Link copied!");
+}
+</script>
+
+</body>
+</html>
