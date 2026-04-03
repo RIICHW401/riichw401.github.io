@@ -141,7 +141,10 @@ button{
   <img src="logo.png" alt="RIICHW logo">
   <h1>Rhode Island - Take Action Now</h1>
   <h2>Help Secure $50 MILLION for Community Health Workers</h2>
-  <button class="cta" onclick="emailBothSenators()">Email Your Senator Now</button>
+<div class="cta-buttons">
+  <a class="cta" href="https://www.reed.senate.gov/contact/email" target="_blank">Contact Senator Reed</a>
+  <a class="cta" href="https://www.whitehouse.senate.gov/contact/email-sheldon/" target="_blank">Contact Senator Whitehouse</a>
+</div>
 </div>
 
 <div class="urgency">
@@ -176,8 +179,11 @@ Sincerely,
 [Your Name]
 [Your City]</textarea>
 
-  <button onclick="copyText()">Copy Message</button>
-  <button onclick="emailBothSenators()">Email Both Senators</button>
+ 
+<div class="cta-buttons">
+  <a class="cta" href="https://www.reed.senate.gov/contact/email" target="_blank">Contact Senator Reed</a>
+  <a class="cta" href="https://www.whitehouse.senate.gov/contact/email-sheldon/" target="_blank">Contact Senator Whitehouse</a>
+</div>
 </div>
 
 <div class="power">
@@ -213,10 +219,7 @@ Sincerely,
 [Your Name]
 [Your City]`;
 
-function emailBothSenators() {
-  const to = "senator@reed.senate.gov,senator@whitehouse.senate.gov";
-  window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
+
 
 function copyText() {
   const text = document.getElementById("emailText").value;
